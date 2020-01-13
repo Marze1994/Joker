@@ -94,13 +94,13 @@ module.exports = {
   plugins: [
     new BundleAnalyzerPlugin({
       // https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin
-      // analyzerMode: 'server',
+      analyzerMode: 'disabled',
       // analyzerHost: '127.0.0.1',
       // analyzerPort: '8888',
       // reportFilename: 'report.html',
       // defaultSizes: 'parsed',
       // openAnalyzer: true,
-      // generateStatsFile: false,
+      // generateStatsFile: false, // 是否生成stats.json文件
       // statsFilename: 'stats.json',
       // statsOptions: null,
       // excludeAssets: null,

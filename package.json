@@ -10,8 +10,7 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
-    "generateAnalyzFile": "webpack --profile --json > stats.json",
-    "analyz": "webpack-bundle-analyzer --port 8888 ./dist/stats.json"
+    "analyz": "webpack --config ./build/webpack.base.conf.js --json > ./dist/stats.json && webpack-bundle-analyzer --port 8888 ./dist/stats.json"
   },
   "dependencies": {
     "vue": "^2.5.2",
