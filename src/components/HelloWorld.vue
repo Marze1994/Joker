@@ -70,6 +70,7 @@ export default {
     this.master = "武磊";
     // console.log(this.name);
     // console.log(Vue.config.keyCodes);
+    console.log(">> test UglifyJsPlugin drop_console");
   },
   methods: {
     handleHelloClick(e) {
