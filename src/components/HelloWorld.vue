@@ -71,6 +71,7 @@ export default {
     // console.log(this.name);
     // console.log(Vue.config.keyCodes);
     console.log(">> test UglifyJsPlugin drop_console");
+    console.log(">> env.NODE_ENV", process.env.NODE_ENV);
   },
   methods: {
     handleHelloClick(e) {
@@ -100,5 +101,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.hello {
+  /* height: 100%; */
 }
 </style>
