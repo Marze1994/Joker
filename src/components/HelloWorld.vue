@@ -1,58 +1,32 @@
 <template>
   <div class="hello" @click.ctrl="handleHelloClick">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank">Forum</a>
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank">Community Chat</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank">Twitter</a>
-      </li>
-      <br />
-      <li>
-        <a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a href="http://router.vuejs.org/" target="_blank">vue-router</a>
-      </li>
-      <li>
-        <a href="http://vuex.vuejs.org/" target="_blank">vuex</a>
-      </li>
-      <li>
-        <a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a>
-      </li>
-    </ul>
+    <h1>Welcome to My Test-Vue2.x App</h1>
     <Child @focus.native="onFocus"></Child>
+    <div>{{ handleStr1 }}</div>
+    <div>{{ handleStr2 }}</div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import Child from "./Child";
+import Vue from 'vue';
+import Child from './Child';
+
+// import camelCase from 'lodash-es/camelCase';
+// import kebabCase from 'lodash-es/kebabCase';
+// 下面写法 结合 lodash-webpack-plugin 和 babel-plugin-lodash 插件可使优化结果最大化！
+import { camelCase, kebabCase } from 'lodash-es';
 
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   components: {
     Child
   },
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
-      name: "Marze",
-      age: 18
+      name: 'Marze',
+      age: 18,
+      str1: 'my-project',
+      str2: 'fooBar'
     };
   },
   computed: {
@@ -63,20 +37,31 @@ export default {
       set(newVal) {
         this.name = newVal;
       }
+    },
+    handleStr1() {
+      return camelCase(this.str1);
+    },
+    handleStr2() {
+      return kebabCase(this.str2);
     }
   },
-  created() {},
+  created() {
+    // let arr1 = ['a', 'b', 'c'];
+    // let res = _.map(arr1, (item) => {
+    //   return item.toUpperCase();
+    // });
+    // console.log(res);
+  },
   mounted() {
-    this.master = "武磊";
-    // console.log(this.name);
+    this.master = '武磊';
+    console.log(this.name);
     // console.log(Vue.config.keyCodes);
-    console.log(">> test UglifyJsPlugin drop_console");
-    console.log(">> env.NODE_ENV", process.env.NODE_ENV);
+    console.log('>> env.NODE_ENV', process.env.NODE_ENV);
   },
   methods: {
     handleHelloClick(e) {
       const target = e.target;
-      console.log("qq");
+      console.log('qq');
     },
     onFocus() {
       alert(1);
@@ -85,7 +70,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
@@ -103,6 +87,7 @@ a {
   color: #42b983;
 }
 .hello {
-  /* height: 100%; */
+  text-align: left;
+  padding-left: 40px;
 }
 </style>

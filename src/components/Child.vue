@@ -13,16 +13,15 @@ export default {
       var vm = this;
       return Object.assign({}, this.$listeners, {
         input: function(event) {
-          vm.$emit("input", event.target.value);
+          vm.$emit('input', event.target.value);
         }
       });
     }
   },
   mounted() {
-    console.log("this.$listeners", this.$listeners);
+    console.log('this.$listeners', this.$listeners);
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>
