@@ -4,10 +4,8 @@ const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
 
-// https://github.com/webpack-contrib/webpack-bundle-analyzer
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
@@ -104,20 +102,6 @@ module.exports = {
     new LodashModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       // _: 'lodash-es'
-    }),
-    new BundleAnalyzerPlugin({
-      // https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin
-      analyzerMode: 'disabled'
-      // analyzerHost: '127.0.0.1',
-      // analyzerPort: '8888',
-      // reportFilename: 'report.html',
-      // defaultSizes: 'parsed',
-      // openAnalyzer: true,
-      // generateStatsFile: false, // 是否生成stats.json文件
-      // statsFilename: 'stats.json',
-      // statsOptions: null,
-      // excludeAssets: null,
-      // logLevel: info
     })
   ]
 };

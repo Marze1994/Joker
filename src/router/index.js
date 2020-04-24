@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
-import About from '@/components/About';
+import Home from '@/views/Home';
+import About from '@/views/About';
+import Graph from '@/views/Graph';
 
 Vue.use(Router);
 
@@ -14,13 +15,18 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
     {
       path: '/about',
       name: 'About',
       component: About
+    },
+    {
+      path: '/graph',
+      name: 'Graph',
+      component: Graph
     }
   ]
 });

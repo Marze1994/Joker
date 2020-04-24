@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img src="./assets/img/logo.png" alt="" />
-    <div>
-      <el-link type="success" href="/home">首页</el-link>
-      <el-link type="success" href="/about">关于</el-link>
+    <!-- <img :src="logImg" alt="" /> -->
+    <div id="views">
+      <NavMenu />
+      <router-view id="firstRouterView" />
     </div>
-    <router-view />
   </div>
 </template>
 
 <script>
+import NavMenu from '@/views/NavMenu';
 export default {
   name: 'App',
+  components: {
+    NavMenu
+  },
+  data() {
+    return {
+      logImg: require('@/assets/img/logo.png')
+    };
+  },
   mounted() {
     // console.log(2);
     // async function timeout() {
@@ -110,19 +118,25 @@ html,
 body {
   width: 100%;
   height: 100%;
-  color: #ffffff !important;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #ffffff;
   width: 100%;
   height: 100%;
-  background-image: url('./assets/img/city.jpg');
+  background-image: url('assets/img/city.jpg');
   background-color: #cccccc;
   background-size: cover;
   background-attachment: fixed;
+}
+#views {
+  display: flex;
+  height: 100%;
+}
+#firstRouterView {
+  flex: 1;
+  margin: 20px;
 }
 </style>

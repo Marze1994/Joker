@@ -5,14 +5,16 @@ const webpack = require('webpack');
 const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
-// const env = require('../config/prod.env')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// 该插件可以测量各个插件和loader所花费的时间
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const smp = new SpeedMeasurePlugin();
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -32,7 +34,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     new CleanWebpackPlugin(),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      // 'process.env': env
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
@@ -151,4 +152,4 @@ if (config.build.bundleAnalyzerReport) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
-module.exports = webpackConfig;
+module.exports = smp.wrap(webpackConfig);

@@ -1,5 +1,5 @@
 <template>
-  <div class="hello" @click.ctrl="handleHelloClick">
+  <div class="home" @click.ctrl="handleHomeClick">
     <h1>Welcome to My Test-Vue2.x App</h1>
     <Child @focus.native="onFocus"></Child>
     <div>{{ handleStr1 }}</div>
@@ -10,14 +10,10 @@
 <script>
 import Vue from 'vue';
 import Child from './Child';
-
-// import camelCase from 'lodash-es/camelCase';
-// import kebabCase from 'lodash-es/kebabCase';
 // 下面写法 结合 lodash-webpack-plugin 和 babel-plugin-lodash 插件可使优化结果最大化！
 import { camelCase, kebabCase } from 'lodash-es';
 
 export default {
-  name: 'HelloWorld',
   components: {
     Child
   },
@@ -30,7 +26,7 @@ export default {
     };
   },
   computed: {
-    master: {
+    handleName: {
       get() {
         return this.name + this.age;
       },
@@ -45,21 +41,15 @@ export default {
       return kebabCase(this.str2);
     }
   },
-  created() {
-    // let arr1 = ['a', 'b', 'c'];
-    // let res = _.map(arr1, (item) => {
-    //   return item.toUpperCase();
-    // });
-    // console.log(res);
-  },
+  created() {},
   mounted() {
-    this.master = '武磊';
+    this.handleName = '武磊';
     console.log(this.name);
     // console.log(Vue.config.keyCodes);
     console.log('>> env.NODE_ENV', process.env.NODE_ENV);
   },
   methods: {
-    handleHelloClick(e) {
+    handleHomeClick(e) {
       const target = e.target;
       console.log('qq');
     },
@@ -70,24 +60,4 @@ export default {
 };
 </script>
 
-<style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.hello {
-  text-align: left;
-  padding-left: 40px;
-}
-</style>
+<style scoped></style>

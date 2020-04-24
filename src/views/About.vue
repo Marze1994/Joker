@@ -29,7 +29,7 @@ export default {
     window.addEventListener(
       'mouseenter',
       (e) => {
-        console.log('我是大哥1', e);
+        // console.log('我是大哥1', e);
         // console.log(e.target);
         // console.log(this.$el);
         // if(this.$el)
@@ -42,47 +42,47 @@ export default {
       'mouseover',
       (e) => {
         e.stopPropagation();
-        console.log('我是大哥2', e);
+        // console.log('我是大哥2', e);
       },
       true
     );
   },
   methods: {
     itemClick(e) {
-      console.log('点击', e);
+      // console.log('点击', e);
     },
     aboutEnter(e) {
-      console.log('aboutEnter');
-      console.log(e);
+      // console.log('aboutEnter');
+      // console.log(e);
     },
     aboutOver(e) {
       // e.preventDefault();
-      console.log('aboutOver');
+      // console.log('aboutOver');
       console.log(e);
     },
     aboutLeave(e) {
-      console.log('aboutLeave');
+      // console.log('aboutLeave');
       console.log(e);
     },
     aboutOut(e) {
-      console.log('aboutOut');
+      // console.log('aboutOut');
       console.log(e);
     },
     itemEnter(e) {
-      console.log('itemEnter');
+      // console.log('itemEnter');
       console.log(e);
     },
     itemOver(e) {
       // e.stopPropagation();
-      console.log('itemOver');
+      // console.log('itemOver');
       console.log(e);
     },
     itemLeave(e) {
-      console.log('itemLeave');
+      // console.log('itemLeave');
       console.log(e);
     },
     itemOut(e) {
-      console.log('itemOut');
+      // console.log('itemOut');
       console.log(e);
     }
   }
@@ -91,7 +91,6 @@ export default {
 
 <style scoped>
 .about {
-  width: 100%;
   height: 60px;
   display: flex;
   position: relative;
