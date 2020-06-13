@@ -3,7 +3,7 @@
     <el-menu
       class="el-menu-vertical-demo"
       default-active="1"
-      background-color="#545c64"
+      :background-color="bgColor"
       text-color="#fff"
       active-text-color="#ffd04b"
       router
@@ -22,6 +22,7 @@
 export default {
   data() {
     return {
+      bgColor: 'rgba(84, 92, 100, 0.5)',
       menuList: [
         {
           index: '1',
@@ -50,6 +51,13 @@ export default {
           router: {
             path: ''
           }
+        },
+        {
+          index: '5',
+          title: '修饰符',
+          router: {
+            path: '/modifiers'
+          }
         }
       ]
     };
@@ -65,5 +73,11 @@ export default {
 .el-menu {
   border-right: none;
   height: 100%;
+}
+.el-menu-item {
+  background-color: transparent !important;
+}
+.el-menu-item:hover {
+  background-color: #c3c3c3 !important;
 }
 </style>

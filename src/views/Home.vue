@@ -1,9 +1,17 @@
 <template>
-  <div class="home" @click.ctrl="handleHomeClick">
-    <h1>Welcome to My Test-Vue2.x App</h1>
-    <Child @focus.native="onFocus"></Child>
-    <div>{{ handleStr1 }}</div>
-    <div>{{ handleStr2 }}</div>
+  <div class="home">
+    <h1>Welcome to Joker App</h1>
+    <!-- <Child @focus.native="onFocus" :title="childStr"></Child> -->
+
+    <!-- 测试 .sync 修饰符 -->
+    <div>父组件准备要传的 str：{{ childStr }}</div>
+    <div>父组件准备要传的 obj：{{ childObj }}</div>
+    <!-- <Child v-bind.sync="childObj" :childObj="childObj"></Child> -->
+    <Child :childStr.sync="childStr" :childObj="childObj"></Child>
+
+    <!-- 测试 lodash -->
+    <div>camelCase：{{ handleStr1 }}</div>
+    <div>kebabCase：{{ handleStr2 }}</div>
   </div>
 </template>
 
@@ -22,7 +30,13 @@ export default {
       name: 'Marze',
       age: 18,
       str1: 'my-project',
-      str2: 'fooBar'
+      str2: 'fooBar',
+      childStr: '这是一个字符串',
+      childObj: {
+        name: 'kaka',
+        age: 19,
+        sex: 'male'
+      }
     };
   },
   computed: {
@@ -41,18 +55,10 @@ export default {
       return kebabCase(this.str2);
     }
   },
-  created() {},
   mounted() {
-    this.handleName = '武磊';
-    console.log(this.name);
-    // console.log(Vue.config.keyCodes);
-    console.log('>> env.NODE_ENV', process.env.NODE_ENV);
+    console.log('NODE_ENV >>> ', process.env.NODE_ENV);
   },
   methods: {
-    handleHomeClick(e) {
-      const target = e.target;
-      console.log('qq');
-    },
     onFocus() {
       alert(1);
     }
@@ -60,4 +66,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>

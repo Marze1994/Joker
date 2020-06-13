@@ -21,26 +21,7 @@ export default {
     };
   },
   mounted() {
-    // console.log(2);
-    // async function timeout() {
-    //   for (let index = 0; index < 3; index++) {
-    //     console.log('async ' + index);
-    //   }
-    // }
-    // console.log(timeout());
-    // console.log('outer');
-    // const res1 = this.getUserName();
-    // console.log(res1);
-    // console.log(3);
     // this.testExecutionFlow();
-    // let a = 0;
-    // let b = async () => {
-    //   a = a + (await 10);
-    //   console.log('2', a); // -> '2' 10
-    // };
-    // b();
-    // a++;
-    // console.log('1', a); // -> '1' 1
   },
   methods: {
     // testExecutionFlow() {
@@ -82,29 +63,16 @@ export default {
     //   console.log(7);
     //   // 1 5 6 3 7 9 8 10 2 4
     // },
-    // getHistoryData(data) {
-    //   return new Promise((resolve, reject) => {
-    //     this.$http
-    //       .get('/api/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a&start=0&count=10')
-    //       .then((res) => {
-    //         resolve(res);
-    //       })
-    //       .catch((err) => {
-    //         reject(err);
-    //       });
-    //   });
-    // },
-    // async getUserName() {
-    //   let arr = [1, 2, 3, 4, 5, 6, 7, 1, 2];
-    //   for (let i = 0; i < arr.length; i++) {
-    //     const res = await this.getHistoryData();
-    //     let arr = [];
-    //     arr.push(res);
-    //   }
-    //   console.log(arr);
-    //   // 父组件 commit
-    //   // 子组件 watch
-    // }
+    async testAsync() {
+      let arr = [1, 2, 3, 4, 5];
+      console.log(arr);
+      for (let i = 0; i < arr.length; i++) {
+        const res = await this.$http.get(
+          '/api/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a&start=0&count=10'
+        );
+      }
+      console.log(arr);
+    }
   }
 };
 </script>
@@ -126,6 +94,7 @@ body {
   color: #ffffff;
   width: 100%;
   height: 100%;
+  line-height: 1.7;
   background-image: url('assets/img/city.jpg');
   background-color: #cccccc;
   background-size: cover;

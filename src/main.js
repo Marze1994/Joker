@@ -8,9 +8,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
 
 import axios from 'axios';
+import echarts from 'echarts';
 
 Vue.use(ElementUI);
 Vue.prototype.$http = axios;
+Vue.prototype.$echarts = echarts;
 Vue.config.productionTip = false;
 
 // import { cube } from './math.js';
