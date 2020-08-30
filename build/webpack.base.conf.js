@@ -1,26 +1,25 @@
-'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+'use strict';
+const path = require('path');
+const utils = require('./utils');
+const config = require('../config');
+const vueLoaderConfig = require('./vue-loader.conf');
 
-// https://github.com/webpack-contrib/webpack-bundle-analyzer
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 function resolve(dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '..', dir);
 }
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
+  include: [resolve('src')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
-})
+});
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -28,20 +27,23 @@ module.exports = {
     app: './src/main.js'
   },
   externals: {
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
+    vue: 'Vue',
+    'vue-router': 'VueRouter'
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath : config.dev.assetsPublicPath
+    publicPath:
+      process.env.NODE_ENV === 'production'
+        ? config.build.assetsPublicPath
+        : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      "assets": resolve('src/assets')
     }
   },
   module: {
@@ -55,7 +57,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -95,20 +101,5 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   },
-  plugins: [
-    new BundleAnalyzerPlugin({
-      // https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin
-      analyzerMode: 'disabled',
-      // analyzerHost: '127.0.0.1',
-      // analyzerPort: '8888',
-      // reportFilename: 'report.html',
-      // defaultSizes: 'parsed',
-      // openAnalyzer: true,
-      // generateStatsFile: false, // 是否生成stats.json文件
-      // statsFilename: 'stats.json',
-      // statsOptions: null,
-      // excludeAssets: null,
-      // logLevel: info
-    })
-  ]
-}
+  plugins: [new LodashModuleReplacementPlugin()]
+};
