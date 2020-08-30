@@ -4,7 +4,6 @@ const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
 
-const webpack = require('webpack');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 function resolve(dir) {
@@ -15,7 +14,7 @@ const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
+  include: [resolve('src')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
@@ -43,11 +42,11 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      "assets": resolve('src/assets')
     }
   },
   module: {
-    // noParse: /lodash-es/,
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
@@ -102,10 +101,5 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   },
-  plugins: [
-    new LodashModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      // _: 'lodash-es'
-    })
-  ]
+  plugins: [new LodashModuleReplacementPlugin()]
 };

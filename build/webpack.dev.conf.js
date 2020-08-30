@@ -58,9 +58,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // DefinePlugin插件暴露全局变量给整个项目引用
     new webpack.DefinePlugin({
       // 'process.env': require('../config/dev.env')
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+      'process.env.NODE_ENV':  JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.

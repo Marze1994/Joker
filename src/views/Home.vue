@@ -1,5 +1,19 @@
 <template>
   <div class="home">
+    <!-- assets -->
+    <img width="80px;" src="../assets/img/logo.png" />
+    <img width="80px;" src="~assets/img/logo.png" />
+    <!-- only the one below does not work -->
+    <img width="80px;" src="assets/img/logo.png" alt="m"/>
+    <img width="80px;" src="@/assets/img/logo.png" />
+    <img width="80px;" :src="logo1" />
+    <img width="80px;" :src="logo2" />
+    <img width="80px;" :src="logo3" />
+    <!-- static -->
+    <img width="80px;" src="/static/img/logo.png" />
+    <img width="80px;" :src="logo4" />
+    <img width="80px;" :src="logo5" />
+
     <h1>Welcome to Joker App</h1>
     <!-- <Child @focus.native="onFocus" :title="childStr"></Child> -->
 
@@ -27,6 +41,13 @@ export default {
   },
   data() {
     return {
+      // 静态资源目录 src/assets 和 static/ 的区别
+      logo1: require('../assets/img/logo.png'),
+      logo2: require('assets/img/logo.png'), // "assets": resolve('src/assets') ——> src/assets/img/logo.png
+      logo3: require('@/assets/img/logo.png'), // '@': resolve('src') ——> src/assets/img/logo.png
+      logo4: '/static/img/logo.png',
+      logo5: '../../static/img/logo.png',
+
       name: 'Marze',
       age: 18,
       str1: 'my-project',

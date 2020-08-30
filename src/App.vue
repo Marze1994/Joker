@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img :src="logImg" alt="" /> -->
     <div id="views">
       <NavMenu />
       <router-view id="firstRouterView" />
@@ -16,9 +15,7 @@ export default {
     NavMenu
   },
   data() {
-    return {
-      logImg: require('@/assets/img/logo.png')
-    };
+    return {};
   },
   mounted() {
     // this.testExecutionFlow();
@@ -63,21 +60,21 @@ export default {
     //   console.log(7);
     //   // 1 5 6 3 7 9 8 10 2 4
     // },
-    async testAsync() {
-      let arr = [1, 2, 3, 4, 5];
-      console.log(arr);
-      for (let i = 0; i < arr.length; i++) {
-        const res = await this.$http.get(
-          '/api/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a&start=0&count=10'
-        );
-      }
-      console.log(arr);
-    }
+    // async testAsync() {
+    //   let arr = [1, 2, 3, 4, 5];
+    //   console.log(arr);
+    //   for (let i = 0; i < arr.length; i++) {
+    //     const res = await this.$http.get(
+    //       '/api/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a&start=0&count=10'
+    //     );
+    //   }
+    //   console.log(arr);
+    // }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -91,21 +88,19 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #ffffff;
   width: 100%;
   height: 100%;
   line-height: 1.7;
-  background-image: url('assets/img/city.jpg');
-  background-color: #cccccc;
-  background-size: cover;
-  background-attachment: fixed;
+  background-color: #999;
+  #views {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  #firstRouterView {
+    flex: 1;
+    margin: 20px;
+  }
 }
-#views {
-  display: flex;
-  height: 100%;
-}
-#firstRouterView {
-  flex: 1;
-  margin: 20px;
-}
+
 </style>

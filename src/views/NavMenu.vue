@@ -3,7 +3,7 @@
     <el-menu
       class="el-menu-vertical-demo"
       default-active="1"
-      :background-color="bgColor"
+      background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
       router
@@ -22,7 +22,6 @@
 export default {
   data() {
     return {
-      bgColor: 'rgba(84, 92, 100, 0.5)',
       menuList: [
         {
           index: '1',
@@ -49,7 +48,7 @@ export default {
           index: '4',
           title: '测试用例',
           router: {
-            path: ''
+            path: 'test'
           }
         },
         {

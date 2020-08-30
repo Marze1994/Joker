@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import About from '@/views/About';
 import Graph from '@/views/Graph';
+import Test from '@/views/Test';
 import Modifiers from '@/views/Modifiers';
 
 Vue.use(Router);
@@ -28,6 +29,11 @@ export default new Router({
       path: '/graph',
       name: 'Graph',
       component: Graph
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     },
     {
       path: '/modifiers',

@@ -26,26 +26,26 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener(
-      'mouseenter',
-      (e) => {
-        // console.log('我是大哥1', e);
-        // console.log(e.target);
-        // console.log(this.$el);
-        // if(this.$el)
-      },
-      true
-    );
-    // true 事件在捕获阶段执行
-    // false 事件在冒泡阶段执行
-    window.addEventListener(
-      'mouseover',
-      (e) => {
-        e.stopPropagation();
-        // console.log('我是大哥2', e);
-      },
-      true
-    );
+    // window.addEventListener(
+    //   'mouseenter',
+    //   (e) => {
+    //     // console.log('我是大哥1', e);
+    //     // console.log(e.target);
+    //     // console.log(this.$el);
+    //     // if(this.$el)
+    //   },
+    //   true
+    // );
+    // // true 事件在捕获阶段执行
+    // // false 事件在冒泡阶段执行
+    // window.addEventListener(
+    //   'mouseover',
+    //   (e) => {
+    //     e.stopPropagation();
+    //     // console.log('我是大哥2', e);
+    //   },
+    //   true
+    // );
   },
   methods: {
     itemClick(e) {
